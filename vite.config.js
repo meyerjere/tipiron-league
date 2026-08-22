@@ -1,8 +1,15 @@
 import { sveltekit } from '@sveltejs/kit/vite';
+import { defineConfig } from 'vite';
 
-/** @type {import('vite').UserConfig} */
-const config = {
-	plugins: [sveltekit()]
-};
-
-export default config;
+export default defineConfig({
+  plugins: [sveltekit()],
+  server: {
+    fs: {
+      // Allow serving files from one level up to the project root
+      allow: [
+        './',
+        'D:/FF/tipiron-league/managers/' // Add your external path here
+      ]
+    }
+  }
+});
